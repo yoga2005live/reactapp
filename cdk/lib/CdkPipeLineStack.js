@@ -22,7 +22,7 @@ class CdkPipeLineStack extends cdk.Stack {
         const pipeline = new CodePipeline(this, 'reactAppPipelineId', {
             pipelineName: 'reactAppPipelineName',
             synth: new ShellStep('Synth', {
-                input: CodePipelineSource.gitHub('yoga2005live/my-pipeline', 'master',
+                input: CodePipelineSource.gitHub('yoga2005live/reactapp', 'master',
                     {authentication: SecretValue.secretsManager('arn:aws:secretsmanager:us-east-2:975663573741:secret:github-oauth-token_1-80vZpc')}
                 ),
                 commands: ['ls -a -l --color', 'npm ci', 'ls -a -l --color', 'npm run build', 'ls -a -l --color', 'npx cdk synth', 'ls -a -l --color'],
