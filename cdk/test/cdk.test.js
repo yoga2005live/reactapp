@@ -1,6 +1,6 @@
 const { expect, matchTemplate, MatchStyle } = require('@aws-cdk/assert');
 const cdk = require('@aws-cdk/core');
-const Cdk = require('../lib/cdk-stack');
+const Cdk = require('../lib/CdkPipeLineStack');
 
 test('Empty Stack', () => {
     const app = new cdk.App();
