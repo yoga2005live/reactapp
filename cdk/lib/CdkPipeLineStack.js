@@ -1,4 +1,3 @@
-
 const cdk = require('@aws-cdk/core');
 const {CodePipeline, CodePipelineSource, ShellStep} = require('@aws-cdk/pipelines');
 const s3 = require('@aws-cdk/aws-s3')
@@ -18,7 +17,23 @@ class CdkPipeLineStack extends cdk.Stack {
             removalPolicy: cdk.RemovalPolicy.DESTROY,
         });
 
-        //Test
+//Provando
+        const repoSource = CodePipelineSource.gitHub('yoga2005live/reactapp', 'master',
+            {authentication: SecretValue.secretsManager('arn:aws:secretsmanager:us-east-2:975663573741:secret:github-oauth-token_1-80vZpc')}
+        )
+
+        const reactBuildApp = new ShellStep('reactBuildApp', {
+            input: repoSource,
+            primaryOutputDirectory: './build',
+            commands: [
+                'ls -a -l --color',
+                'npm i',
+                'npm run build',
+                'ls -a -l --color',
+            ]
+        });
+//Provando
+
         const pipeline = new CodePipeline(this, 'reactAppPipelineId', {
             pipelineName: 'reactAppPipelineName',
             synth: new ShellStep('Synth', {
