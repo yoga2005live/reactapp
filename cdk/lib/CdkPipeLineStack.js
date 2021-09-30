@@ -18,7 +18,7 @@ class CdkPipeLineStack extends cdk.Stack {
             removalPolicy: cdk.RemovalPolicy.DESTROY,
         });
 
-
+        //Test
         const pipeline = new CodePipeline(this, 'reactAppPipelineId', {
             pipelineName: 'reactAppPipelineName',
             synth: new ShellStep('Synth', {
