@@ -40,6 +40,11 @@ class CdkPipeLineStack extends cdk.Stack {
                 input: CodePipelineSource.gitHub('yoga2005live/reactapp', 'master',
                     {authentication: SecretValue.secretsManager('arn:aws:secretsmanager:us-east-2:975663573741:secret:github-oauth-token_1-80vZpc')}
                 ),
+//Provando
+                additionalInputs: {
+                    reactBuildApp
+                },
+//Provando
                 commands: [
                     'ls -a -l --color',
                     'cd cdk', 'npm ci',
