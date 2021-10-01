@@ -47,13 +47,13 @@ class CdkPipeLineStack extends cdk.Stack {
                 // output: s3Staging
             })
         });
-
-        const s3Staging = new s3.Bucket(this, 'staging', {
+        const date = new Date();
+        const s3Staging = new s3.Bucket(this, 'staging' + date, {
             removalPolicy: cdk.RemovalPolicy.DESTROY,
-            autoDeleteObjects:true
+            autoDeleteObjects: true
         });
         const s3Deployment = new s3Deploy.BucketDeployment(this, 'cdkDeployBucket', {
-            sources:[s3Deploy.Source.asset("../build")],
+            sources: [s3Deploy.Source.asset("../build")],
             destinationBucket: s3Staging
         });
 
