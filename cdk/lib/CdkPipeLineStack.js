@@ -26,7 +26,7 @@ class CdkPipeLineStack extends cdk.Stack {
                     'npm run build',
                     'ls -a -l --color',
                     'apt install zip',
-                    'mv -r build reactApp',
+                    'mv build reactApp',
                     'ls -a -l --color',
                     'mkdir "build_$(date +\'%mM_%dD_%yY_%HH\')"',
                     'ls -a -l --color',
