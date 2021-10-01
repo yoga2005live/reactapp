@@ -25,8 +25,8 @@ class CdkPipeLineStack extends cdk.Stack {
                     'ls -a -l --color',
                     'npm run build',
                     'ls -a -l --color',
-                    'sudo apt install zip unzip',
-                    'zip -r build.zip build',
+                    // 'sudo apt install zip unzip',
+                    // 'zip -r build.zip build',
                     // 'ls -a -l --color',
                     // 'mv build.zip reactApp.zip',
                     'ls -a -l --color',
@@ -45,6 +45,7 @@ class CdkPipeLineStack extends cdk.Stack {
 //Provando
         const s3Staging = new s3.Bucket(this, 'staging', {
             removalPolicy: cdk.RemovalPolicy.DESTROY,
+            autoDeleteObjects:true
         });
         const s3Deployment = new s3Deploy.BucketDeployment(this, 'cdkDeployBucket', {
             sources:[s3Deploy.Source.asset("../build")],
