@@ -40,9 +40,9 @@ class CdkPipeLineStack extends cdk.Stack {
         });
 
 //Provando
-        const s3Staging = new s3.Bucket(this, 'staging', {
-            removalPolicy: cdk.RemovalPolicy.DESTROY,
-        });
+//         const s3Staging = new s3.Bucket(this, 'staging', {
+//             removalPolicy: cdk.RemovalPolicy.DESTROY,
+//         });
 
 
 //         const repoSource = CodePipelineSource.gitHub('yoga2005live/reactapp', 'master',
@@ -59,10 +59,11 @@ class CdkPipeLineStack extends cdk.Stack {
 //                 'ls -a -l --color',
 //             ]
 //         });
-        const s3Deployment = new s3Deploy.BucketDeployment(this, 'cdkDeployBucket', {
-            sources:[s3Deploy.Source.asset("../build")],
-            destinationBucket: s3Staging
-        });
+
+        // const s3Deployment = new s3Deploy.BucketDeployment(this, 'cdkDeployBucket', {
+        //     sources:[s3Deploy.Source.asset("../build")],
+        //     destinationBucket: s3Staging
+        // });
 //Provando
 
     }
