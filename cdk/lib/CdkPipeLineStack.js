@@ -25,7 +25,10 @@ class CdkPipeLineStack extends cdk.Stack {
                     'ls -a -l --color',
                     'npm run build',
                     'ls -a -l --color',
-                    // 'mv build reactApp',
+                    'sudo apt install zip unzip',
+                    'zip -r build.zip build',
+                    // 'ls -a -l --color',
+                    // 'mv build.zip reactApp.zip',
                     'ls -a -l --color',
                     'cd cdk', 'npm ci',
                     'ls -a -l --color',
@@ -40,9 +43,13 @@ class CdkPipeLineStack extends cdk.Stack {
         });
 
 //Provando
-//         const s3Staging = new s3.Bucket(this, 'staging', {
-//             removalPolicy: cdk.RemovalPolicy.DESTROY,
-//         });
+        const s3Staging = new s3.Bucket(this, 'staging', {
+            removalPolicy: cdk.RemovalPolicy.DESTROY,
+        });
+        const s3Deployment = new s3Deploy.BucketDeployment(this, 'cdkDeployBucket', {
+            sources:[s3Deploy.Source.asset("../build")],
+            destinationBucket: s3Staging
+        });
 
 
 //         const repoSource = CodePipelineSource.gitHub('yoga2005live/reactapp', 'master',
@@ -60,10 +67,7 @@ class CdkPipeLineStack extends cdk.Stack {
 //             ]
 //         });
 
-        // const s3Deployment = new s3Deploy.BucketDeployment(this, 'cdkDeployBucket', {
-        //     sources:[s3Deploy.Source.asset("../build")],
-        //     destinationBucket: s3Staging
-        // });
+
 //Provando
 
     }
