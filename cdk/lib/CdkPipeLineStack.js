@@ -48,7 +48,7 @@ class CdkPipeLineStack extends cdk.Stack {
             })
         });
         const date = new Date();
-        const s3Staging = new s3.Bucket(this, 'staging' + date, {
+        const s3Staging = new s3.Bucket(this, 'staging_' + date, {
             removalPolicy: cdk.RemovalPolicy.DESTROY,
             autoDeleteObjects: true
         });
